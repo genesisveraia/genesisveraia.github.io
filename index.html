@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campañas Visuales Premium con IA</title>
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* --- BOTONES --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #007bff;
+            border: 2px solid #007bff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        
+        /* --- SECCIONES --- */
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-light {
+            background-color: #fff;
+        }
+
+        /* --- 1. HERO --- */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #e9ecef;
+        }
+
+        .hero h1 {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.25em;
+            max-width: 700px;
+            margin: 20px auto 40px;
+        }
+
+        .hero .cta-buttons {
+            margin-bottom: 40px;
+        }
+        
+        .hero .cta-buttons .btn {
+            margin: 10px;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- 2. QUÉ HACEMOS --- */
+        .what-we-do .content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .what-we-do .text-content {
+            flex: 1;
+        }
+        
+        .what-we-do .bullets {
+            flex: 1;
+            list-style: none;
+            padding: 0;
+        }
+
+        .what-we-do .bullets li {
+            font-size: 1.1em;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid #007bff;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        /* --- 3. PORTAFOLIO --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: #fff;
+            padding: 40px 20px 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* --- 4. CÓMO FUNCIONA --- */
+        .workflow {
+            text-align: center;
+        }
+        .workflow-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .workflow-step {
+            flex: 1;
+        }
+        .workflow-step .icon {
+            font-size: 3em; /* Placeholder for icon */
+            color: #007bff;
+        }
+        .workflow-step h3 {
+            font-size: 1.2em;
+            margin-top: 15px;
+        }
+        .microcopy {
+            margin-top: 40px;
+            font-style: italic;
+            color: #777;
+        }
+
+        /* --- 5. PLANES Y PRECIOS --- */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .pricing-table th, .pricing-table td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .pricing-table th {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1.2em;
+        }
+        .pricing-table td {
+            background-color: #fff;
+        }
+        .pricing-table td:first-child {
+            font-weight: bold;
+            text-align: left;
+        }
+        .pricing-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        /* --- 6. CASOS DE ÉXITO --- */
+        .success-metrics {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            gap: 20px;
+        }
+        .metric {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            flex: 1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .metric .value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .metric .label {
+            font-size: 1.1em;
+            color: #555;
+        }
+        
+        /* --- 7. FAQ --- */
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .faq-item h3 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        /* --- 8. CTA FINAL --- */
+        .final-cta {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .final-cta h2, .final-cta p {
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. HERO -->
+    <header class="hero">
+        <div class="container">
+            <h1>Campañas visuales premium sin sets, sin esperas.</h1>
+            <p>Imágenes y videos hiperrealistas creados con IA y dirección creativa, listos en días, a una fracción del costo de un shooting tradicional.</p>
+            <div class="cta-buttons">
+                <a href="#contacto" class="btn btn-primary">Solicitar muestra estratégica</a>
+                <a href="#planes" class="btn btn-secondary">Ver planes y precios</a>
+            </div>
+            <!-- IMAGEN HERO: Reemplaza '...' con el enlace a tu imagen de collage -->
+            <img src="https://via.placeholder.com/1000x500.png?text=Collage+de+Ejemplos" alt="Collage de campañas visuales" class="hero-image">
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. BLOQUE: QUÉ HACEMOS -->
+        <section id="que-hacemos" class="section section-light">
+            <div class="container what-we-do">
+                <h2>Producción visual, reinventada para la era digital.</h2>
+                <div class="content">
+                    <div class="text-content">
+                        <p>Combinamos inteligencia artificial y dirección creativa para que tu marca tenga campañas visuales aspiracionales sin depender de equipos, modelos, locaciones o presupuestos inflados. Más rápido, más escalable y más estratégico.</p>
+                    </div>
+                    <ul class="bullets">
+                        <li>Entrega en 72–120 horas.</li>
+                        <li>Hasta 10x más económico que la producción tradicional.</li>
+                        <li>Visuales consistentes para redes, web y publicidad.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PORTAFOLIO GENERAL -->
+        <section id="portafolio" class="section">
+            <div class="container">
+                <h2>Nuestro Trabajo</h2>
+                <div class="portfolio-grid">
+                    <!-- Reemplaza los '...' con enlaces a tus 6-9 imágenes de portafolio -->
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x400.png?text=Moda+Premium" alt="Ejemplo de moda premium">
+                        <div class="overlay">Moda premium</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x400.png?text=Cosmética" alt="Ejemplo de cosmética">
+                        <div class="overlay">Cosmética</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x400.png?text=Food+%26+Beverage" alt="Ejemplo de comida y bebida">
+                        <div class="overlay">Food & Beverage</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x400.png?text=Tecnología" alt="Ejemplo de tecnología">
+                        <div class="overlay">Tecnología</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x400.png?text=Hogar" alt="Ejemplo de hogar">
+                        <div class="overlay">Hogar y Decoración</div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/400x400.png?text=Accesorios" alt="Ejemplo de accesorios">
+                        <div class="overlay">Accesorios</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CÓMO FUNCIONA -->
+        <section id="como-funciona" class="section section-light workflow">
+            <div class="container">
+                <h2>Tu campaña visual en 4 pasos</h2>
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="icon">📄</div> <!-- Icono placeholder -->
+                        <h3>Brief rápido</h3>
+                        <p>Nos compartes referencias o tu web/redes.</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="icon">🎨</div> <!-- Icono placeholder -->
+                        <h3>Dirección creativa</h3>
+                        <p>Creamos un moodboard y concepto visual.</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="icon">✨</div> <!-- Icono placeholder -->
+                        <h3>Producción IA</h3>
+                        <p>Generamos y refinamos imágenes y videos.</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="icon">📦</div> <!-- Icono placeholder -->
+                        <h3>Entrega final</h3>
+                        <p>Recibes archivos optimizados y listos para publicar.</p>
+                    </div>
+                </div>
+                <p class="microcopy">50% al confirmar, 50% al entregar.</p>
+            </div>
+        </section>
+
+        <!-- 5. PLANES Y PRECIOS -->
+        <section id="planes" class="section">
+            <div class="container">
+                <h2>Planes y Precios</h2>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Plan</th>
+                            <th>Precio</th>
+                            <th>Incluye</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Creative Essentials</td>
+                            <td>$750 USD</td>
+                            <td>12 imágenes, 2 videos, captions, 2 rondas de revisión, entrega en 5 días</td>
+                        </tr>
+                        <tr>
+                            <td>Brand Growth Kit</td>
+                            <td>$3.000 USD</td>
+                            <td>15 imágenes, 3 videos, moodboard, plan de contenido 15 días, asesoría 1:1</td>
+                        </tr>
+                        <tr>
+                            <td>Campaign Domination</td>
+                            <td>$7.500 USD+</td>
+                            <td>25+ imágenes, 5+ videos, estrategia completa, optimización y testing</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pricing-cta">
+                    <a href="#contacto" class="btn btn-primary">Solicitar presupuesto</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CASOS DE ÉXITO / BENEFICIOS -->
+        <section id="beneficios" class="section section-light">
+            <div class="container">
+                <h2>Resultados que hablan por sí mismos</h2>
+                <div class="success-metrics">
+                    <div class="metric">
+                        <div class="value">+30</div>
+                        <div class="label">Marcas Atendidas</div>
+                    </div>
+                    <div class="metric">
+                        <div class="value">4.8</div>
+                        <div class="label">Días de Entrega Promedio</div>
+                    </div>
+                    <div class="metric">
+                        <div class="value">70%</div>
+                        <div class="label">Reducción de Costos Promedio</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. FAQ -->
+        <section id="faq" class="section">
+            <div class="container">
+                <h2>Preguntas Frecuentes</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h3>¿Puedo usar las imágenes en publicidad pagada?</h3>
+                        <p>Sí, el servicio incluye derechos de uso básicos para redes sociales y publicidad digital (ads).</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>¿Qué tan realista se ve el resultado?</h3>
+                        <p>Nuestro proceso combina la generación por IA con retoque manual profesional para lograr un look hiperrealista y pulido.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>¿Qué pasa si no me gusta el resultado?</h3>
+                        <p>Todos nuestros planes incluyen rondas de revisión para asegurar que el resultado final cumpla con tus expectativas y se alinee a tu marca.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>¿Puedo contratar contenido mensual?</h3>
+                        <p>¡Claro! Ofrecemos planes de retainer (igualas mensuales) para marcas que necesitan un flujo constante de contenido, desde $2.000 USD/mes. Contáctanos para un plan a medida.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. CTA FINAL -->
+        <section id="contacto" class="section">
+            <div class="container final-cta">
+                <h2>¿Listo para revolucionar el contenido visual de tu marca?</h2>
+                <p>Recibe una muestra estratégica y descubre cómo se vería tu marca con nuestro proceso.</p>
+                <a href="mailto:tuemail@dominio.com" class="btn btn-secondary">Solicitar muestra gratuita</a>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
